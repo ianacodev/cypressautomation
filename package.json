@@ -4,8 +4,18 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "run:chrome": "npx cypress run --browser chrome",
+    "run:headed": "npx cypress run --headed",
+    "run": "npx cypress run",
+    "start": "npx cypress open",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "cypress": "^12.13.0"
+  },
+  "devDependencies": {
+    "@cypress/xpath": "^2.0.3"
+  }
 }
