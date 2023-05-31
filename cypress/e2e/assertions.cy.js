@@ -5,7 +5,7 @@ describe('assertions demo', () => {
     );
   });
 
-  xit('implicit assertions', () => {
+  it('implicit assertions', () => {
     // independent assertions
     cy.url().should('include', 'orangehrmlive.com');
     cy.url().should(

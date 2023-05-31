@@ -5,7 +5,7 @@ describe('check ui elements', () => {
     cy.visit('https://itera-qa.azurewebsites.net/home/automation');
   });
 
-  xit('checking radio buttons', () => {
+  it('checking radio buttons', () => {
     // count
     cy.get(':nth-child(4) > .card-body input[type=radio]').should(
       'have.length',
