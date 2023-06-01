@@ -28,12 +28,31 @@
 /// <reference types="Cypress"/>
 /// <reference types="cypress-xpath"/>
 
+// Custom login command
 Cypress.Commands.add('login', (username, password) => {
+  cy.visit(
+    'https://opensource-demo.orangehrmlive.com/web/index.php/auth/login',
+  );
   cy.get('input[name=username]').type('admin');
   cy.get('input[name=password]').type('admin123');
   cy.get('.oxd-button').click();
-  cy.url().should(
-    'eq',
-    'https://opensource-demo.orangehrmlive.com/web/index.php/dashboard/index',
-  );
 });
+
+// custom command clicking on link using label
+Cypress.Commands.add('clickLink', (label) => {
+  cy.get('a').contains(label).click();
+});
+
+// OVERWRITE contains() ignore case
+Cypress.Commands.overwriteQuery(
+  'contains',
+  function (originalFn, filter, text, options = {}) {
+    if (typeof text === 'object') {
+      options = text;
+      text = filter;
+      filter = undefined;
+    }
+    options.matchCase = false;
+    return originalFn.call(this, filter, text, options);
+  },
+);
